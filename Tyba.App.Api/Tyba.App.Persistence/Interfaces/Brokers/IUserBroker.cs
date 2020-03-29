@@ -10,5 +10,6 @@ namespace Tyba.App.Persistence.Interfaces.Brokers
     public interface IUserBroker
     {
         Task<UserEntity> GetUserByEmail(string email);
+        Task<int> AddUser(UserEntity newUserEntity);
     }
 }

@@ -15,6 +15,12 @@ namespace Tyba.App.Persistence.Brokers
             _dbContext = dbContext;
         }
 
+        public async Task<int> AddUser(UserEntity newUserEntity)
+        {
+            _dbContext.Users.Add(newUserEntity);
+            return await _dbContext.SaveChangesAsync();
+        }
+
         public async Task<UserEntity> GetUserByEmail(string email)
         {
             var result = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Email == email);
